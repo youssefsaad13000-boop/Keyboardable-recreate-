@@ -2,6 +2,10 @@
 
 This mod is a client-side addon intended for use with `controllable`.
 
+## Preview
+
+![Keyboardable overlay preview](image.png)
+
 ## Implemented behavior
 
 - Full keyboard overlay with controller-friendly row/column navigation.
@@ -15,18 +19,6 @@ This mod is a client-side addon intended for use with `controllable`.
 - Minecraft: 1.20.1
 - Forge: 47.x
 - Controllable: 0.21.9+
-
-## Build
-
-This project uses ForgeGradle and Java 17.
-
-Run:
-
-```powershell
-./gradlew build
-```
-
-Output jar will be in `build/libs/`.
 
 ## Notes
 
