@@ -1,0 +1,33 @@
+# Gradle and build output
+.gradle/
+build/
+out/
+bin/
+
+# IDE and editor files
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime files
+run/
+logs/
+*.log
+crash-reports/
+
+# Local caches and temp files
+*.tmp
+*.temp
+
+# Secrets/private material
+.env
+.env.*
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key

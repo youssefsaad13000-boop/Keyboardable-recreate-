@@ -1,0 +1,15 @@
+{
+  "key.categories.keyboardable": "Keyboardable Addon",
+  "category.controllable.keyboardable": "Keyboardable Addon",
+  "key.keyboardable.toggle": "Toggle Keyboard",
+  "key.keyboardable.nav_up": "Keyboard Navigate Up",
+  "key.keyboardable.nav_down": "Keyboard Navigate Down",
+  "key.keyboardable.nav_left": "Keyboard Navigate Left",
+  "key.keyboardable.nav_right": "Keyboard Navigate Right",
+  "key.keyboardable.select": "Keyboard Select",
+  "key.keyboardable.close": "Keyboard Close",
+  "key.keyboardable.page": "Keyboard Toggle Symbols",
+  "key.keyboardable.backspace": "Keyboard Backspace",
+  "key.keyboardable.shift": "Keyboard Shift",
+  "key.keyboardable.caps": "Keyboard Caps Lock"
+}
