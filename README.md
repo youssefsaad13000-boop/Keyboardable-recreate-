@@ -1,29 +1,26 @@
-# Keyboardable - Controllable Addon (Forge 1.20.1)
+# Keyboardable - Touch Keyboard for Fabric 1.21.x
 
-Try to recreate
+A redesigned client-side mod for Minecraft Fabric that provides a touchscreen-friendly on-screen keyboard, automatic text field detection, and Arabic/RTL support.
 
-This mod is a client-side addon intended for use with `controllable`.
+## Features
+- Automatic keyboard opening when a text field receives focus
+- Automatic dismissal when focus is lost or the screen changes
+- Touch-friendly keyboard buttons that work with taps/clicks and pointer events
+- English and Arabic keyboard layouts with a quick toggle
+- Automatic Arabic shaping and RTL display helpers for connected Arabic text
+- No Controllable dependency
 
-## Preview
-
-![Keyboardable overlay preview](image.png)
-
-## Implemented behavior
-
-- Full keyboard overlay with controller-friendly row/column navigation.
-- Dedicated symbol page toggle (`123!` <-> `ABC`).
-- Auto-opens when a text input target is present (e.g. edit boxes and sign screens).
-- Blocks all underlying mouse/key/scroll interaction while visible.
-- Cancels tooltips while visible so keyboard remains the only active hover target.
-
-## Compatibility intent
-
-- Minecraft: 1.20.1
-- Forge: 47.x
-- Controllable: 0.21.9+
+## Supported versions
+- Minecraft: 1.21.x family (targeting 1.21.1 / 1.21.11 compatibility expectations)
+- Fabric Loader: 0.16.10+
+- Fabric API: 0.115.4+
 
 ## Notes
+This version has been redesigned around Fabric and removes the previous Forge/Controllable architecture from the original project.
 
-- Keybindings are exposed under category `Keyboardable Addon`.
-- Overlay visibility can be toggled manually with the toggle keybind.
-- This is a base implementation and can be extended with gamepad glyphs, hold-repeat, and smoother focus wrap logic.
+## Usage
+1. Open a text field in-game.
+2. The keyboard appears automatically.
+3. Tap keys to type.
+4. Use the language toggle to switch between English and Arabic.
+5. When the field loses focus, the keyboard closes automatically.

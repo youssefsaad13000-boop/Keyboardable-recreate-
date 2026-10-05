@@ -1,73 +1,61 @@
 plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'fabric-loom' version '1.7.1'
+    id 'maven-publish'
 }
 
-version = mod_version
-group = mod_group_id
+version = project.mod_version
+group = project.mod_group_id
 
 base {
-    archivesName = mod_id
+    archivesName = project.mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-
-    copyIdeResources = true
-
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
+    withSourcesJar()
 }
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
-    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://maven.fabricmc.net/' }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    // Controllable jar from local mods folder - provides classes to compile against
-    compileOnly fg.deobf(files('../controllable-forge-1.20.1-0.21.9.jar'))
-}
-
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [
-            mod_id         : mod_id,
-            mod_name       : mod_name,
-            mod_version    : mod_version,
-            minecraft_version: minecraft_version
-    ]
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    it.options.release = 21
+    it.options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft_version', project.minecraft_version
+    inputs.property 'loader_version', project.loader_version
+    inputs.property 'mod_id', project.mod_id
+    inputs.property 'mod_name', project.mod_name
+    inputs.property 'mod_description', project.mod_description
+
+    filesMatching('fabric.mod.json') {
+        expand(
+                'version': project.version,
+                'minecraft_version': project.minecraft_version,
+                'loader_version': project.loader_version,
+                'mod_id': project.mod_id,
+                'mod_name': project.mod_name,
+                'mod_description': project.mod_description
+        )
+    }
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.mod_id}" }
+    }
 }

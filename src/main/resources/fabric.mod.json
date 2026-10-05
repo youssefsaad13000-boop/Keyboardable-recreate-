@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "keyboardable",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "license": "${mod_license}",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.keyboardable.KeyboardableClient"
+    ]
+  },
+  "mixins": [
+    "keyboardable.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
